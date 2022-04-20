@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->string('mail')->nullable();
+            $table->string('secret_key')->nullable();
             $table->timestamps();
         });
     }
