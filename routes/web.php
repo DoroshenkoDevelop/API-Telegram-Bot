@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+/*Route::get('order', function () {
+   \Illuminate\Support\Facades\Http::post('https://api.tlgr.org/bot5205789708:AAGKxM9J6BWEW1LGBZUsIqSJBLveOUawKYw/sendMessage',[ // отправка простого сообщения
+       'chat_id' => 543162642,
+       'text' => 'message',
+   ]);
+});*/
+
+Route::get('order', function () {
+    \Illuminate\Support\Facades\Http::post('https://api.tlgr.org/bot5205789708:AAGKxM9J6BWEW1LGBZUsIqSJBLveOUawKYw/sendMessage',[
+        'chat_id' => 543162642,
+        'text' => 'message',
+    ]);
 });
