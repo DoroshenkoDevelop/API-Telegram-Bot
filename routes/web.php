@@ -25,9 +25,5 @@ use Illuminate\Support\Facades\Route;
    ]);
 });*/
 
-Route::get('order', function () {
-    \Illuminate\Support\Facades\Http::post('https://api.tlgr.org/bot5205789708:AAGKxM9J6BWEW1LGBZUsIqSJBLveOUawKYw/sendMessage',[
-        'chat_id' => 543162642,
-        'text' => 'message',
-    ]);
-});
+Route::get('order', [\App\Helpers\Telegram::class,'sendMessage']);
+
