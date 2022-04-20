@@ -25,5 +25,9 @@ use Illuminate\Support\Facades\Route;
    ]);
 });*/
 
-Route::get('order', [\App\Helpers\Telegram::class,'sendMessage']);
+/*Route::get('order', [\App\Helpers\Telegram::class,'sendMessage']); //отправка сообщения*/
+
+/*Route::get('document', function (\App\Helpers\Telegram $telegram) {
+ $telegram->sendDocument('1.png',543162642); // отправка файлов
+});*/
 

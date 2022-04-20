@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class Telegram
 {
@@ -16,12 +17,20 @@ class Telegram
         $this->bot = $bot;
     }
 
-    public function sendMessage(/*$chat_id, $message*/)
+    public function sendMessage()
     {
-        $this->http::post(self::url.$this->bot.'/sendMessage',[
+        return $this->http::post(self::url.$this->bot.'/sendMessage',[
             'chat_id' => env('REPORT_TELEGRAM_ID'),
             'text' => 'hello',
             'parse_mode' => 'html'
+        ]);
+    }
+
+    public function sendDocument($file, $chat_id) //Отправка документов
+    {
+       return $this->http::attach('document',Storage::get('/public/'.$file),'document.png')
+           ->post(self::url.$this->bot.'/sendDocument',[
+            'chat_id' => $chat_id,
         ]);
     }
 
