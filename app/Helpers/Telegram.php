@@ -19,7 +19,7 @@ class Telegram
     public function sendMessage(/*$chat_id, $message*/)
     {
         $this->http::post(self::url.$this->bot.'/sendMessage',[
-            'chat_id' => 543162642,
+            'chat_id' => env('REPORT_TELEGRAM_ID'),
             'text' => 'hello',
             'parse_mode' => 'html'
         ]);
