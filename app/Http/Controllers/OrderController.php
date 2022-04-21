@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Telegram;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,13 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Telegram $telegram)
     {
-        //
+        $orders = Order::create(request()->all());
+
+        $telegram->sendMessage(message: (string)view('message',compact('orders')));
+
+        return redirect()->back();
     }
 
     /**

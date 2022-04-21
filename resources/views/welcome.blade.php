@@ -28,36 +28,39 @@
         <form action="{{route('order.store')}}" method="POST">
         @csrf
         <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" class="form-control" name="name" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+
+            <input type="text" class="form-control" name="name" placeholder="Username">
         </div>
 
         <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">@example.com</span>
+            <input type="email" name="mail" class="form-control" placeholder="Recipient's username">
         </div>
 
         <div class="input-group mb-3">
-            <input type="number" class="form-control" placeholder="Recipient's phone" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">Phone</span>
+            <input type="number" name="phone" class="form-control" placeholder="Recipient's phone">
         </div>
+
         <button type="submit" class="btn btn-success">Отправить</button>
         </form>
     </div>
 
-
-    <table class="table table-striped">
+    <table class="table">
         <thead>
+        @foreach($orders as $order)
         <tr>
-            @foreach($orders as $order)
+
             <th scope="col">{{$order->id}}</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            @endforeach
+            <th scope="col">{{$order->name}}</th>
+            <th scope="col">{{$order->phone}}</th>
+            <th scope="col">{{$order->mail}}</th>
         </tr>
+        @endforeach
         </thead>
+
+
+
     </table>
+
 
     </body>
 </html>
