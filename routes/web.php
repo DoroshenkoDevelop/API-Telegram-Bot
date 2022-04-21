@@ -14,25 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[\App\Http\Controllers\OrderController::class,'index']);
 
-Route::get('send', function () {
-   \Illuminate\Support\Facades\Http::post('https://api.tlgr.org/bot5205789708:AAGKxM9J6BWEW1LGBZUsIqSJBLveOUawKYw/sendMessage',[ // отправка простого сообщения
-       'chat_id' => 543162642,
-       'text' => 'message',
-   ]);
-});
+Route::resource('order',\App\Http\Controllers\OrderController::class);
 
-Route::get('message', [\App\Helpers\Telegram::class,'sendMessage']); //отправка сообщения
-
-Route::get('message/edit', function (\App\Helpers\Telegram $telegram) {
-    $telegram->editMessage('100'); // редактирование текста по id сообщения
-});
-
-
-Route::get('document', function (\App\Helpers\Telegram $telegram) {
- $telegram->sendDocument('1.png',543162642); // отправка файлов
-});
 
